@@ -1,0 +1,46 @@
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+
+spring:
+  application:
+    name: serie-service
+  rabbitmq:
+    sleuth:
+      enabled: true
+      username: guest
+      password: guest
+      host: localhost
+      port: 5672
+  mongodb:
+    embedded:
+      version: 4.0.2
+  data:
+    mongodb:
+      database: test
+      port: 27018
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411/
+
+exchange:
+  serie:
+    name: SerieExchange
+
+queue:
+  serie:
+    name: SerieQueue
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+    healthcheck:
+      enabled: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
