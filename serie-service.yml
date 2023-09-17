@@ -13,10 +13,10 @@ spring:
       port: 5672
   mongodb:
     embedded:
-      version: 4.0.2
+      version: 6.0.3
   data:
     mongodb:
-      database: test
+      database: seriesTest
       port: 27018
   zipkin:
     enabled: true
